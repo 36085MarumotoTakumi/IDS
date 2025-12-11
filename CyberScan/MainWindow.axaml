@@ -1,0 +1,62 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="500"
+        x:Class="CyberScan.MainWindow"
+        Title="CyberScan - Educational Attack Simulator"
+        Width="800" Height="600"
+        Background="#101010"
+        Foreground="#00FF41">
+
+    <!-- スタイル定義（ボタンの見た目など） -->
+    <Window.Styles>
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#202020"/>
+            <Setter Property="Foreground" Value="#00FF41"/>
+            <Setter Property="BorderBrush" Value="#00FF41"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15,10"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#003300"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#000000"/>
+            <Setter Property="Foreground" Value="#00FF41"/>
+            <Setter Property="CaretBrush" Value="#00FF41"/>
+            <Setter Property="BorderBrush" Value="#008F11"/>
+            <Setter Property="FontFamily" Value="Monospace"/>
+        </Style>
+    </Window.Styles>
+
+    <!-- 画面レイアウト -->
+    <Grid RowDefinitions="Auto, Auto, Auto, *" Margin="20">
+        
+        <!-- ヘッダー -->
+        <TextBlock Grid.Row="0" Text="CYBER ATTACK SIMULATOR v1.0" 
+                   FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" 
+                   Margin="0,0,0,20" LetterSpacing="2"/>
+
+        <!-- 入力エリア -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10">
+            <TextBlock Text="TARGET IP:" VerticalAlignment="Center" FontSize="16"/>
+            <TextBox Name="IpAddressInput" Width="250" Watermark="e.g. 192.168.1.1"/>
+        </StackPanel>
+
+        <!-- アクションボタン -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20" Margin="0,20">
+            <Button Name="ScanButton" Content="[ START RECONNAISSANCE ]" Click="OnScanClick"/>
+        </StackPanel>
+
+        <!-- ログ出力エリア -->
+        <Border Grid.Row="3" BorderBrush="#00FF41" BorderThickness="1" Background="Black" Padding="10">
+            <ScrollViewer Name="LogScrollViewer">
+                <TextBlock Name="LogOutput" FontFamily="Monospace" TextWrapping="Wrap" FontSize="14"/>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>
