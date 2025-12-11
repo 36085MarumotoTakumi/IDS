@@ -18,12 +18,9 @@ namespace CyberScan
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .WithInterFont() // 内蔵フォント(Inter)をロード
                 .With(new FontManagerOptions
                 {
-                    // ★追加: OSのデフォルトフォントが見つからない場合のエラー回避策
-                    // WithInterFont()でロードされた "Inter" をアプリ全体のデフォルトに強制指定します
-                    DefaultFamilyName = "Inter"
+                    DefaultFamilyName = "avares://CyberScan/Fonts#Roboto"
                 })
                 .LogToTrace()
                 .UseReactiveUI();
